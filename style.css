@@ -1,0 +1,129 @@
+
+/*here we are see that background image move slower then foreground image on scrolling because backgrouond are set at larger distance in z-direction then foreground image 
+so foreground image is closer so it mover faster and background image is at larger distance so it move slower on scrolling */
+
+
+*{                                    /*to look better in window  , to see difference  comment  this */
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+#wrapper{
+     height: 100vh;
+     overflow-x: hidden;          /*image are larger then screen width so overflow hide so image not scrool in x-direction */
+     perspective:  10px;          /* to on 3D mode So we set background image at distance x from foreground image in z-direction; */
+
+
+}
+
+
+.container{
+    
+    height: 100%;
+    position: relative;               /*all text and  foreground and background image are relative so we can give z-index value to these image,text So they overlap each other on z-axis*/
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;                     /*to on 3D beheviour */
+    z-index: -1;                        /*z-index = -1 so that  Adventure Time text will overlap on container thing(text,freground,background image) */  
+     
+}
+
+
+.background , .foreground{
+
+    height: 100%;
+    width:  100%;
+    position:  absolute;                  /*we use absolute because we want to overlap two image and in scrolling foreground image move faster then background image */
+                                          /*in absolute positioned relative to the nearest positioned ancestor  so  we use absolute so that one image move according to other image; */
+}
+
+
+.background{ 
+    transform: translateZ(-40px) scale(5);              /*translateZ(-40px)  means we set background image at distance 40px from widnow in backside and then image become small so to increse the size of image we use scale */   
+}
+
+.foreground{
+     transform: translateZ(-20px) scale(3);
+}
+
+
+
+h1{                                              /*designing for text ("ADVENTURE") and here position is absolute so text is overlap on both image */
+   
+    position: absolute;
+    font-size:  8rem;
+    top: 90px;                                   /*The top property affects the vertical position of a positioned element. */
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+
+section{                                             /*design for section means all text of biking , surfling , paragliding */
+      background-color: rgb(45 , 45 , 45);
+      color : white;                                 /* font color */
+      padding : 5rem  0rem;                         /*Padding is used to create space around an element's content, inside of any defined borders. */
+}                                                     /*so 5rem create space from top and bottom side , and 0rem form left and right side; */
+
+ 
+
+.bg1{
+    background-image: url(./image/biking.jpg);                             /*it set background image of a text*/
+}
+
+.bg2{
+    background-image: url(./image/paragliding.jpg);
+}
+
+.bg3{
+    background-image: url(./image/surfling.jpg);
+}
+
+
+.Adventure_Time{
+    font-size:5rem;
+    padding:0 10rem;                       /*we take padding of section from top and dowm and padding of other text such as adventure_time , and text */
+}                                          /* from left and right because we don't want to give padding to background image from left and right side */
+
+.text{
+    font-size : 1.5rem;
+    padding : 0 10rem;
+    margin: 5rem 0rem;
+} 
+
+
+
+
+.bg{
+    position : relative;                             /*here location of background image is relative to window or viewport so we use relative position  */    
+    width : 100%;
+    height:  500px;
+    background-attachment: fixed;                  /*Specifies whether the background images are fixed with regard to the viewport ('fixed') or scroll along with the element ('scroll') or its contents ('local'). */
+    background-position:  center;
+    background-size: cover;                        /*background image cover the screen size */
+}
+
+
+.BIKING{ 
+      position: absolute;                             /*here location of text = "BIKING"  is relative to background image means background image is ancestor of this text */ 
+      color : black;                               /*so we use absolute  position  */    
+      font-size : 3.5rem;
+      font-weight : 600;
+      top : 50%;
+      left : 39%;                                    /*The left property affects the horizontal position of a positioned element.*/
+    
+}
+
+
+.PARA_GLIDING{
+      position: absolute;
+      color: black;
+      font-size : 3.5rem;
+      font-weight : 600;
+      top : 50%;
+      left : 34%;
+
+}
